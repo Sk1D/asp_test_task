@@ -68,4 +68,26 @@
         });
         return response;
     };
+    this.deleteAlbum = function (Id) {
+        var response = $http({
+            method: "delete",
+            url: "api/values/DelAlbum",
+            params: {
+                id: JSON.stringify(Id)
+            },
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return response;
+    };
+    this.deleteTrack = function (Id) {
+        var response = $http({
+            method: "delete",
+            url: "api/values/DelTrack",
+            params: {
+                id: JSON.stringify(Id)
+            },
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return response;
+    };
 })

@@ -91,6 +91,27 @@
             alert('Error in editing track records');
         })
     }
+    $scope.deleteAlbum = function (Album) {
+        var getAlbumData = musicService.deleteAlbum(Album.Id);
+        getAlbumData.then(function (msg) {
+            alert(msg.data);
+            GetAllAlbums();
+            $scope.divAlbum = false;
+            $scope.loaded = false;
+        }, function () {
+            alert('Error in deleting album record');
+        });
+    }
+    $scope.deleteTrack = function (Track) {
+        var albumId = Track.AlbumId;
+        var getTrackData = musicService.deleteTrack(Track.Id);
+        getTrackData.then(function (msg) {
+            alert(msg.data);
+            GetAllAlbums();
+            $scope.showTracks(albumId);
+        });
+    }
+
     function ClearFields() {
         $scope.albumId = "";
         $scope.albumName = "";

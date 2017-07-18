@@ -118,6 +118,37 @@ namespace WebApp.Music.API
             }
         }
 
+        [HttpDelete]
+        public string DelAlbum(int id)
+        {
+            try
+            {
+                unitOfWork.Albums.Delete(id);
+                unitOfWork.Save();
+                return "Selected album record deleted sucessfully";
+            }
+            catch (Exception)
+            {
+                return "Invalid operation";
+            }
+
+
+        }
+        [HttpDelete]
+        public string DelTrack(int id)
+        {
+            try
+            {
+                unitOfWork.Tracks.Delete(id);
+                unitOfWork.Save();
+                return "Selected track record deleted sucessfully";
+            }
+            catch (Exception)
+            {
+                return "Invalid operation";
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             unitOfWork.Dispose();
