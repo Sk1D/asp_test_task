@@ -11,34 +11,7 @@ using System.Web.Http.Dependencies;
 
 namespace WebApp.Music.DI
 {
-    //public class NinjectResolver : IDependencyResolver
-    //{
-    //    private IKernel kernel;
-    //    public NinjectResolver(IKernel kernelParam)
-    //    {
-    //        kernel = kernelParam;
-    //       // AddBindings();
-    //    }
-    //    public IDependencyScope BeginScope()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
 
-    //    public void Dispose()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public object GetService(Type serviceType)
-    //    {
-    //        return kernel.TryGet(serviceType);
-    //    }
-
-    //    public IEnumerable<object> GetServices(Type serviceType)
-    //    {
-    //        return kernel.GetAll(serviceType);
-    //    }
-    //}
     public class NinjectResolver : NinjectScope, IDependencyResolver
     {
         private readonly IKernel _kernel;
