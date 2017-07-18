@@ -1,7 +1,25 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<div ng-controller="musicCtrl">
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>Id</b></td>
+                <td><b>Name Album</b></td>
+                <td><b>Year</b></td>
+            </tr>
+            <tr ng-repeat="album in albums">
+                <td>{{album.Id}}</td>
+                <td>{{album.Name}}</td>
+                <td>{{album.Year}}</td>
+                <td>
+                    <span ng-click="showTracks(album.Id)" class="btn btn-primary">Show</span>
+                    <span ng-click="editAlbum(album)" class="btn btn-primary">Edit</span>
+                    <span ng-click="deleteAlbum(album)" class="btn btn-danger">Delete</span>
+                </td>
+            </tr>
 
-<h2>Index</h2>
+        </table>
+    </div>
 
+
+
+</div>

@@ -34,6 +34,18 @@ namespace WebApp.Music.API
             return value;
         }
 
+        [HttpGet]
+        public IEnumerable<Track> GetTracks(int id)
+        {
+            var values = unitOfWork.Tracks.Find(x => x.AlbumId == id);
+            return values;
+        }
+        [HttpGet]
+        public IEnumerable<Track> GetTracks()
+        {
+            var values = unitOfWork.Tracks.GetAll();
+            return values;
+        }
 
 
         protected override void Dispose(bool disposing)
