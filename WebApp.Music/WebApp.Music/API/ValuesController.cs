@@ -74,6 +74,49 @@ namespace WebApp.Music.API
 
         }
 
+        [HttpPut]
+        public string UpdateAlbum(int id, [FromBody]Album value)
+        {
+            if (value != null && id == value.Id)
+            {
+                Album _album = unitOfWork.Albums.Get(id);
+                _album.Name = value.Name;
+                _album.Year = value.Year;
+                unitOfWork.Albums.Update(_album);
+                unitOfWork.Save();
+                return "Album record updated successfully";
+            }
+            else
+            {
+                return "Invalid album record";
+            }
+        }
+        [HttpPut]
+        public void UpdateTrack([FromBody]Track value)
+        {
+
+            if (value != null)
+            {
+                Track _track = unitOfWork.Tracks.Get(value.Id);
+                if (_track != null)
+                {
+                    _track.Artist = value.Artist;
+                    _track.Title = value.Title;
+                    _track.Time = value.Time;
+                    unitOfWork.Tracks.Update(_track);
+                }
+                else
+                {
+                    Track _newTrack = new Track();
+                    _newTrack.Artist = value.Artist;
+                    _newTrack.Title = value.Title;
+                    _newTrack.Time = value.Time;
+                    _newTrack.AlbumId = value.AlbumId;
+                    unitOfWork.Tracks.Create(_newTrack);
+                }
+                unitOfWork.Save();
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {

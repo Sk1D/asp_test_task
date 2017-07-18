@@ -47,5 +47,25 @@
         });
         return response;
     };
-
+    this.updateAlbum = function (album, albumId) {
+        var response = $http({
+            method: "put",
+            url: "api/values/UpdateAlbum",
+            params: {
+                id: JSON.stringify(albumId)
+            },
+            data: JSON.stringify(album),
+            dataType: "json"
+        });
+        return response;
+    };
+    this.updateTrack = function (track) {
+        var response = $http({
+            method: "put",
+            url: "api/values/UpdateTrack",
+            data: JSON.stringify(track),
+            dataType: "json"
+        });
+        return response;
+    };
 })

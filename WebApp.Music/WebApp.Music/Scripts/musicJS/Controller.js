@@ -39,7 +39,19 @@
         };
         var getAlbumAction = $scope.Action;
         if (getAlbumAction == "Update") {
-            //update 
+            var getAlbumData = musicService.updateAlbum(Album, $scope.albumId);
+            getAlbumData.then(function (msg) {
+                _updateTrack.forEach(function (item, i, _updateTrack) {
+                    item.albumId = $scope.albumId;
+                    var getTrackData = musicService.updateTrack(item);
+                });
+                GetAllAlbums();
+                alert(msg.data);
+                $scope.divAlbum = false;
+                $scope.loaded = false;
+            }, function () {
+                alert('Error in updating album record');
+            });
         }
         else {
             //add
@@ -64,7 +76,21 @@
             });
         }
     }
+    $scope.editAlbum = function (album) {
 
+        var editTracksData = musicService.getTracks(album.Id);
+        editTracksData.then(function (_edittracks) {
+            $scope.albumId = album.Id;
+            $scope.albumName = album.Name;
+            $scope.albumYear = album.Year;
+            $scope.tracks = _edittracks.data;
+            $scope.Action = "Update";
+            $scope.loaded = false;
+            $scope.divAlbum = true;
+        }, function () {
+            alert('Error in editing track records');
+        })
+    }
     function ClearFields() {
         $scope.albumId = "";
         $scope.albumName = "";
