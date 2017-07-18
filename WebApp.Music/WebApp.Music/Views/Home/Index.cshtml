@@ -19,7 +19,47 @@
 
         </table>
     </div>
-    <ng-include src="'@Url.Action("TrackList", "Home")'"></ng-include>
+
+    @*<ng-include src="'Home/AlbumList'"></ng-include>*@
+    <div class="content" ng-show="loaded">
+        <table class="table">
+            <tr>
+                <th>
+                    trackID
+                </th>
+                <th>
+                    Artist
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Time
+                </th>
+                <th></th>
+            </tr>
+
+            <tr ng-repeat="track in tracks">
+                <td>
+                    {{track.Id}}
+                </td>
+                <td>
+                    {{track.Artist}}
+                </td>
+                <td>
+                    {{track.Title}}
+                </td>
+                <td>
+                    {{track.Time}}
+                </td>
+                <td>
+                    <a href="javascript:void(0);" ng-click="deleteTrack(track)">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @*<ng-include src="'@Url.Action("TrackList", "Home")'"></ng-include>*@
     <span ng-click="AddAlbumDiv()" class="btn btn-default">
         Add Album
     </span>
@@ -66,4 +106,5 @@
             <input type="button" class="btn btn-danger" value="Cancel" ng-click="Cancel()" />
         </div>
     </div>
+
 </div>

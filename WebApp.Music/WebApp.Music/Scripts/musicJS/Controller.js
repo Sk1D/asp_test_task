@@ -11,7 +11,7 @@
         }, function () {
             alert('Error in getting album records');
         });
-    }
+    };
 
     $scope.showTracks = function (albumId) {
         var getTracksData = musicService.getTracks(albumId);
@@ -23,14 +23,14 @@
         }, function () {
             alert('Error in getting track records');
         });
-    }
+    };
 
     $scope.AddAlbumDiv = function () {
         ClearFields();
         $scope.Action = "Add";
         $scope.divAlbum = true;
         $scope.loaded = false;
-    }
+    };
     $scope.AddUpdateAlbum = function (_updateTrack) {
         var Album = {
             Id: $scope.albumId,
@@ -75,7 +75,7 @@
                 alert('Error in adding album record');
             });
         }
-    }
+    };
     $scope.editAlbum = function (album) {
 
         var editTracksData = musicService.getTracks(album.Id);
@@ -90,7 +90,7 @@
         }, function () {
             alert('Error in editing track records');
         })
-    }
+    };
     $scope.deleteAlbum = function (Album) {
         var getAlbumData = musicService.deleteAlbum(Album.Id);
         getAlbumData.then(function (msg) {
@@ -101,7 +101,7 @@
         }, function () {
             alert('Error in deleting album record');
         });
-    }
+    };
     $scope.deleteTrack = function (Track) {
         var albumId = Track.AlbumId;
         var getTrackData = musicService.deleteTrack(Track.Id);
@@ -110,7 +110,7 @@
             GetAllAlbums();
             $scope.showTracks(albumId);
         });
-    }
+    };
 
     function ClearFields() {
         $scope.albumId = "";
@@ -126,7 +126,7 @@
                 'Album': ''
             }
         ];
-    }
+    };
     $scope.addNewEmptyTrack = function () {
         $scope.tracks.push({
             'Id': '',
@@ -136,7 +136,7 @@
             'AlbumId': '',
             'Album': ''
         });
-    }
+    };
 
     $scope.Cancel = function () {
         GetAllAlbums();
@@ -144,4 +144,5 @@
         $scope.loaded = false;
 
     };
+  
 })

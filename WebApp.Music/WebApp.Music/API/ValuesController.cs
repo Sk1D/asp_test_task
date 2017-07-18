@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApp.Music.BL;
 using WebApp.Music.DAL.Entities;
 using WebApp.Music.DAL.Interfaces;
 using WebApp.Music.DAL.Repositories;
@@ -12,16 +13,20 @@ namespace WebApp.Music.API
 {
     public class ValuesController : ApiController
     {
-        IUnitOfWork unitOfWork;
+        private IService serv;
         public ValuesController()
         {
-            unitOfWork = new UnitOfWork();
+            this.serv = new Service();
+        }
+        public ValuesController(IService service)
+        {
+            this.serv = service;
         }
         // GET api/values/GetAlbums
         [HttpGet]
         public IEnumerable<Album> GetAlbums()
         {
-            var values = unitOfWork.Albums.GetAll();
+            var values = serv.ReadAlbums();
             return values;
         
         }
@@ -30,129 +35,62 @@ namespace WebApp.Music.API
         [HttpGet]
         public Album GetAlbum(int id)
         {
-            var value = unitOfWork.Albums.Get(id);
+            var value = serv.ReadAlbum(id);
             return value;
         }
         [HttpGet]
         public IEnumerable<Track> GetTracks(int id)
         {
-            var values = unitOfWork.Tracks.Find(x => x.AlbumId == id);
+            var values = serv.ReadTrack(id);
             return values;
         }
         [HttpGet]
         public IEnumerable<Track> GetTracks()
         {
-            var values = unitOfWork.Tracks.GetAll();
+            var values = serv.ReadTracks();
             return values;
         }
 
         [HttpPost]
         public int AddAlbum([FromBody]Album value)
         {
-            int albumID = 0;
-            if (value != null)
-            {
-                unitOfWork.Albums.Create(value);
-                unitOfWork.Save();
-                albumID = value.Id;
-            }
-            return albumID;
+            var result = serv.CreateAlbum(value);
+            return result;
+           
         }
         [HttpPost]
         public string AddTrack([FromBody]Track value)
         {
-            if (value != null)
-            {
-                unitOfWork.Tracks.Create(value);
-                unitOfWork.Save();
-                return "track record added successfully";
-            }
-            else
-            {
-                return "Invalid track record";
-            }
-
+            var result = serv.CreateTrack(value);
+            return result;
         }
 
         [HttpPut]
         public string UpdateAlbum(int id, [FromBody]Album value)
         {
-            if (value != null && id == value.Id)
-            {
-                Album _album = unitOfWork.Albums.Get(id);
-                _album.Name = value.Name;
-                _album.Year = value.Year;
-                unitOfWork.Albums.Update(_album);
-                unitOfWork.Save();
-                return "Album record updated successfully";
-            }
-            else
-            {
-                return "Invalid album record";
-            }
+            var result = serv.UpdateAlbum(id,value);
+            return result;
         }
         [HttpPut]
         public void UpdateTrack([FromBody]Track value)
         {
-
-            if (value != null)
-            {
-                Track _track = unitOfWork.Tracks.Get(value.Id);
-                if (_track != null)
-                {
-                    _track.Artist = value.Artist;
-                    _track.Title = value.Title;
-                    _track.Time = value.Time;
-                    unitOfWork.Tracks.Update(_track);
-                }
-                else
-                {
-                    Track _newTrack = new Track();
-                    _newTrack.Artist = value.Artist;
-                    _newTrack.Title = value.Title;
-                    _newTrack.Time = value.Time;
-                    _newTrack.AlbumId = value.AlbumId;
-                    unitOfWork.Tracks.Create(_newTrack);
-                }
-                unitOfWork.Save();
-            }
+            serv.UpdateTrack(value);
+            
         }
 
         [HttpDelete]
-        public string DelAlbum(int id)
+        public string DeleteAlbum(int id)
         {
-            try
-            {
-                unitOfWork.Albums.Delete(id);
-                unitOfWork.Save();
-                return "Selected album record deleted sucessfully";
-            }
-            catch (Exception)
-            {
-                return "Invalid operation";
-            }
-
-
+            var result = serv.DeleteAlbum(id);
+            return result;
         }
         [HttpDelete]
-        public string DelTrack(int id)
+        public string DeleteTrack(int id)
         {
-            try
-            {
-                unitOfWork.Tracks.Delete(id);
-                unitOfWork.Save();
-                return "Selected track record deleted sucessfully";
-            }
-            catch (Exception)
-            {
-                return "Invalid operation";
-            }
+            var result = serv.DeleteTrack(id);
+            return result;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            unitOfWork.Dispose();
-            base.Dispose(disposing);
-        }
+
     }
 }

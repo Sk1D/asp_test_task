@@ -8,7 +8,7 @@ using WebApp.Music.DAL.Interfaces;
 
 namespace WebApp.Music.DAL.Repositories
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private SQLContext db;
         private TrackRepository trackRepository;

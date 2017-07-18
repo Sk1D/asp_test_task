@@ -3,7 +3,7 @@
         //   debugger;
         var response = $http({
             method: "get",
-            url: "api/values/GetAlbums",
+            url: "/api/values/GetAlbums",
             headers: { 'Content-Type': 'application/json' }
         });
         return response;
@@ -11,7 +11,7 @@
     this.getAlbum = function (albumId) {
         var response = $http({
             method: "post",
-            url: "api/values",
+            url: "/api/values/GetAlbum",
             params: {
                 id: JSON.stringify(albumId)
             }
@@ -21,7 +21,7 @@
     this.getTracks = function (albumId) {
         var response = $http({
             method: "get",
-            url: "api/values/GetTracks",
+            url: "/api/values/GetTracks",
             params: {
                 id: JSON.stringify(albumId)
             }
@@ -31,7 +31,7 @@
     this.addAlbum = function (album) {
         var response = $http({
             method: "post",
-            url: "api/values/AddAlbum",
+            url: "/api/values/AddAlbum",
             data: JSON.stringify(album),
             dataType: "json"
         });
@@ -41,7 +41,7 @@
         // debugger;
         var response = $http({
             method: "post",
-            url: "api/values/AddTrack",
+            url: "/api/values/AddTrack",
             data: JSON.stringify(track),
             dataType: "json"
         });
@@ -50,7 +50,7 @@
     this.updateAlbum = function (album, albumId) {
         var response = $http({
             method: "put",
-            url: "api/values/UpdateAlbum",
+            url: "/api/values/UpdateAlbum",
             params: {
                 id: JSON.stringify(albumId)
             },
@@ -62,7 +62,7 @@
     this.updateTrack = function (track) {
         var response = $http({
             method: "put",
-            url: "api/values/UpdateTrack",
+            url: "/api/values/UpdateTrack",
             data: JSON.stringify(track),
             dataType: "json"
         });
@@ -71,7 +71,7 @@
     this.deleteAlbum = function (Id) {
         var response = $http({
             method: "delete",
-            url: "api/values/DelAlbum",
+            url: "/api/values/DeleteAlbum",
             params: {
                 id: JSON.stringify(Id)
             },
@@ -82,7 +82,7 @@
     this.deleteTrack = function (Id) {
         var response = $http({
             method: "delete",
-            url: "api/values/DelTrack",
+            url: "/api/values/DeleteTrack",
             params: {
                 id: JSON.stringify(Id)
             },

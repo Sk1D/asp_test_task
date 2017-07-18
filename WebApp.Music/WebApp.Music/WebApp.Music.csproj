@@ -916,7 +916,6 @@
     <Content Include="Scripts\musicJS\Module.js" />
     <Content Include="Scripts\musicJS\Service.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\TrackList.cshtml" />
   </ItemGroup>
@@ -941,6 +940,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\AlbumList.cshtml" />
+    <Content Include="Views\Home\divAlbum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -953,6 +954,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebApp.Music.BL\WebApp.Music.BL.csproj">
+      <Project>{FCEF4A89-4160-4678-A2F0-63AA68A8C1B5}</Project>
+      <Name>WebApp.Music.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebApp.Music.DAL\WebApp.Music.DAL.csproj">
       <Project>{46D2C657-B7B6-4F69-86A1-328DA990B714}</Project>
       <Name>WebApp.Music.DAL</Name>
