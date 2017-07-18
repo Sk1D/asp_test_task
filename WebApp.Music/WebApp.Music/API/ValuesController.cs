@@ -33,7 +33,6 @@ namespace WebApp.Music.API
             var value = unitOfWork.Albums.Get(id);
             return value;
         }
-
         [HttpGet]
         public IEnumerable<Track> GetTracks(int id)
         {
@@ -45,6 +44,34 @@ namespace WebApp.Music.API
         {
             var values = unitOfWork.Tracks.GetAll();
             return values;
+        }
+
+        [HttpPost]
+        public int AddAlbum([FromBody]Album value)
+        {
+            int albumID = 0;
+            if (value != null)
+            {
+                unitOfWork.Albums.Create(value);
+                unitOfWork.Save();
+                albumID = value.Id;
+            }
+            return albumID;
+        }
+        [HttpPost]
+        public string AddTrack([FromBody]Track value)
+        {
+            if (value != null)
+            {
+                unitOfWork.Tracks.Create(value);
+                unitOfWork.Save();
+                return "track record added successfully";
+            }
+            else
+            {
+                return "Invalid track record";
+            }
+
         }
 
 

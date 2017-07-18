@@ -19,7 +19,51 @@
 
         </table>
     </div>
-    <ng-include src="'@Url.Action("TrackList", "Home")'"></ng-include> 
+    <ng-include src="'@Url.Action("TrackList", "Home")'"></ng-include>
+    <span ng-click="AddAlbumDiv()" class="btn btn-default">
+        Add Album
+    </span>
+    <div ng-show="divAlbum">
+        <p class="divHead"></p>
 
+        <table class="table">
+            <tr>
+                <td><b><i>{{Action}} Album</i></b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Id</b></td>
+                <td>
+                    <input type="text" disabled="disabled" ng-model="albumId" />
+                </td>
+                <td><b>Name</b></td>
+                <td>
+                    <input type="text" ng-model="albumName" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Year</b></td>
+                <td>
+                    <input type="text" ng-model="albumYear" />
+                </td>
 
+            </tr>
+        </table>
+        <input type="button" class="btn btn-default" value="addTrack" ng-click="addNewEmptyTrack()" />
+        <div class="control-group" ng-repeat="track in tracks">
+            <div class="control-group" ng-repeat="(key,value) in track" ng-if="key!='Album' && key!='AlbumId'">
+                <label class="control-label">{{key}}</label>
+                <div class="controls">
+                    <input type="text" ng-model="track[key]" />
+                </div>
+            </div>
+            <hr />
+        </div>
+        <div>
+            <input type="button" class="btn btn-default" value="Save" ng-click="AddUpdateAlbum(tracks)" />
+            <input type="button" class="btn btn-danger" value="Cancel" ng-click="Cancel()" />
+        </div>
+    </div>
 </div>

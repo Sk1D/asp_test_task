@@ -28,4 +28,24 @@
         });
         return response;
     };
+    this.addAlbum = function (album) {
+        var response = $http({
+            method: "post",
+            url: "api/values/AddAlbum",
+            data: JSON.stringify(album),
+            dataType: "json"
+        });
+        return response;
+    };
+    this.addTrack = function (track) {
+        // debugger;
+        var response = $http({
+            method: "post",
+            url: "api/values/AddTrack",
+            data: JSON.stringify(track),
+            dataType: "json"
+        });
+        return response;
+    };
+
 })
