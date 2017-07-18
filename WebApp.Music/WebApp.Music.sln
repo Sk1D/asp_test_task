@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Music.DAL", "WebApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Music.BL", "WebApp.Music.BL\WebApp.Music.BL.csproj", "{FCEF4A89-4160-4678-A2F0-63AA68A8C1B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Music.DI", "WebApp.Music.DI\WebApp.Music.DI.csproj", "{485FAC48-3BD4-4D17-ABCD-99FA5B4E556F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FCEF4A89-4160-4678-A2F0-63AA68A8C1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCEF4A89-4160-4678-A2F0-63AA68A8C1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCEF4A89-4160-4678-A2F0-63AA68A8C1B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{485FAC48-3BD4-4D17-ABCD-99FA5B4E556F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{485FAC48-3BD4-4D17-ABCD-99FA5B4E556F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{485FAC48-3BD4-4D17-ABCD-99FA5B4E556F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{485FAC48-3BD4-4D17-ABCD-99FA5B4E556F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

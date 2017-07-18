@@ -16,10 +16,6 @@ namespace WebApp.Music.BL
         {
             this.unitOfWork = uow;
         }
-        public Service()   // delete !!! DI
-        {
-            this.unitOfWork = new UnitOfWork();
-        }
 
         public int CreateAlbum(Album value)
         {

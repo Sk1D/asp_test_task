@@ -13,20 +13,17 @@ namespace WebApp.Music.API
 {
     public class ValuesController : ApiController
     {
-        private IService serv;
-        public ValuesController()
-        {
-            this.serv = new Service();
-        }
+        private IService service;
         public ValuesController(IService service)
         {
-            this.serv = service;
+            this.service = service;
         }
+
         // GET api/values/GetAlbums
         [HttpGet]
         public IEnumerable<Album> GetAlbums()
         {
-            var values = serv.ReadAlbums();
+            var values = service.ReadAlbums();
             return values;
         
         }
@@ -35,59 +32,59 @@ namespace WebApp.Music.API
         [HttpGet]
         public Album GetAlbum(int id)
         {
-            var value = serv.ReadAlbum(id);
+            var value = service.ReadAlbum(id);
             return value;
         }
         [HttpGet]
         public IEnumerable<Track> GetTracks(int id)
         {
-            var values = serv.ReadTrack(id);
+            var values = service.ReadTrack(id);
             return values;
         }
         [HttpGet]
         public IEnumerable<Track> GetTracks()
         {
-            var values = serv.ReadTracks();
+            var values = service.ReadTracks();
             return values;
         }
 
         [HttpPost]
         public int AddAlbum([FromBody]Album value)
         {
-            var result = serv.CreateAlbum(value);
+            var result = service.CreateAlbum(value);
             return result;
            
         }
         [HttpPost]
         public string AddTrack([FromBody]Track value)
         {
-            var result = serv.CreateTrack(value);
+            var result = service.CreateTrack(value);
             return result;
         }
 
         [HttpPut]
         public string UpdateAlbum(int id, [FromBody]Album value)
         {
-            var result = serv.UpdateAlbum(id,value);
+            var result = service.UpdateAlbum(id,value);
             return result;
         }
         [HttpPut]
         public void UpdateTrack([FromBody]Track value)
         {
-            serv.UpdateTrack(value);
+            service.UpdateTrack(value);
             
         }
 
         [HttpDelete]
         public string DeleteAlbum(int id)
         {
-            var result = serv.DeleteAlbum(id);
+            var result = service.DeleteAlbum(id);
             return result;
         }
         [HttpDelete]
         public string DeleteTrack(int id)
         {
-            var result = serv.DeleteTrack(id);
+            var result = service.DeleteTrack(id);
             return result;
         }
 

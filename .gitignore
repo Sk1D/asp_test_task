@@ -7,3 +7,5 @@
 /WebApp.Music/WebApp.Music.DAL/obj
 /WebApp.Music/WebApp.Music/App_Data/MusicDB.mdf
 /WebApp.Music/WebApp.Music/App_Data/MusicDB_log.ldf
+/WebApp.Music/WebApp.Music.DI/bin
+/WebApp.Music/WebApp.Music.DI/obj
