@@ -918,6 +918,7 @@
     <Content Include="Web.config" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\TrackList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ValuesController.cs" />

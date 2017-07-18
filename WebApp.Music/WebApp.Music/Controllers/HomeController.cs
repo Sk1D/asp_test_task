@@ -22,16 +22,23 @@ namespace WebApp.Music.Controllers
 
                 return View();
         }
-        public ActionResult Test()
+        //public ActionResult Test()
+        //{
+        //    //using (var db = new SQLContext())
+        //    //{
+        //    //    var value = db.Albums.ToList();
+        //    //    return View(value);
+        //    //}
+        //    var value = unitOfWork.Albums.GetAll();
+        //    return View(value);
+        //}
+        public ActionResult TrackList()
         {
-            //using (var db = new SQLContext())
-            //{
-            //    var value = db.Albums.ToList();
-            //    return View(value);
-            //}
-            var value = unitOfWork.Albums.GetAll();
-            return View(value);
+            return View();
         }
+
+
+
         protected override void Dispose(bool disposing)
         {
             unitOfWork.Dispose();

@@ -12,4 +12,16 @@
             alert('Error in getting album records');
         });
     }
+
+    $scope.showTracks = function (albumId) {
+        var getTracksData = musicService.getTracks(albumId);
+        getTracksData.then(function (_tracks) {
+            $scope.tracks = _tracks.data;
+            // debugger;
+            $scope.divAlbum = false;
+            $scope.loaded = true;
+        }, function () {
+            alert('Error in getting track records');
+        });
+    }
 })
